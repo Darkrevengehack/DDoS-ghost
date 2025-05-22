@@ -1,130 +1,257 @@
-# DDoS-ghost
-Herramienta de Estrés avanzada 2025
+# DDoS Ghost 2025 - Herramienta de Pruebas de Estrés Avanzada
 
 <img src="https://raw.githubusercontent.com/0xAbbarhSF/0xBotNet/main/images%20(3).png">
 
-### Instalación
-Requisitos
-Python 3.7+
-Termux actualizado (o cualquier sistema Linux)
-Conexión a Internet
-Instalación en Termux
+![Versión](https://img.shields.io/badge/Versión-4.0.0-brightgreen)
+![Python](https://img.shields.io/badge/Python-3.7+-blue)
+![Plataforma](https://img.shields.io/badge/Plataforma-Android/Termux-orange)
+![Licencia](https://img.shields.io/badge/Licencia-MIT-yellow)
 
-* pkg update -y && pkg upgrade -y
-* pkg install python git -y
-* git clone https://github.com/Darkrevengehack/DDoS-ghost.git
+## ⚠️ Descargo de Responsabilidad
+
+**Esta herramienta está diseñada exclusivamente para fines educativos, de investigación y pruebas de seguridad en entornos controlados y autorizados.**
+
+- El uso de esta herramienta contra sistemas sin permiso explícito es **ILEGAL** y puede resultar en consecuencias legales severas.
+- El desarrollador NO se hace responsable del mal uso de esta herramienta.
+- Al usar este software, aceptas utilizarlo solo en sistemas que posees o para los cuales tienes autorización explícita para realizar pruebas.
+
+## 🆕 Novedades de la Versión 4.0.0
+
+- ✨ **Menú interactivo** con 5 opciones principales
+- 🔄 **Sistema de configuración persistente** (ghost_config.json)
+- 📊 **Reportes automáticos** de ataques (ghost_reports.json)
+- 🔍 **Verificación avanzada de proxies** con puntuación por velocidad
+- 🕵️ **15+ User-Agents reales** actualizados para 2025
+- ⏱️ **4 patrones de timing** inteligentes (aggressive, normal, stealth, human_like)
+- 🥷 **Modo sigiloso** que simula tráfico web legítimo
+- 🎨 **Interfaz mejorada** con colores y estadísticas en tiempo real
+
+<img src="https://raw.githubusercontent.com/0xAbbarhSF/0xBotNet/main/images%20(21).jpeg">
+
+## 📋 Características Completas
+
+### 🎯 Vectores de Ataque
+- ✅ **Múltiples protocolos**: TCP, UDP, HTTP
+- ✅ **Métodos aleatorios** para mayor efectividad
+- ✅ **Puertos configurables** o aleatorios
+
+### 🔒 Anonimato Avanzado
+- ✅ **Rotación automática de proxies** SOCKS4/SOCKS5/HTTP
+- ✅ **Verificación de proxies** antes del uso
+- ✅ **Frecuencia de rotación configurable**
+- ✅ **Soporte para archivos de proxies personalizados**
+
+### 🧠 Inteligencia Artificial
+- ✅ **Paquetes con contenido aleatorio** para evadir detección
+- ✅ **Headers HTTP realistas** que simulan navegadores reales
+- ✅ **Patrones de timing humanos** para evitar filtros
+- ✅ **Ofuscación avanzada** de firmas de tráfico
+
+### 📱 Optimización para Termux
+- ✅ **No requiere permisos root**
+- ✅ **Optimizado para dispositivos móviles**
+- ✅ **Instalación automática de dependencias**
+- ✅ **Interfaz táctil amigable**
+
+## 🛠️ Instalación
+
+### Requisitos
+- **Android 7+** con Termux instalado
+- **Python 3.7+** (se instala automáticamente)
+- **Conexión a Internet** estable
+
+### Instalación Rápida
+```bash
+# Actualizar Termux
+pkg update && pkg upgrade -y
+
+# Instalar dependencias básicas
+pkg install python git -y
+
+# Clonar el repositorio
+git clone https://github.com/Darkrevengehack/DDoS-ghost.git
+
+# Entrar al directorio
 cd DDoS-ghost
-* pip3 install -r requirements.txt
 
-## 📚 Uso
+# Instalar dependencias Python (opcional - se instalan automáticamente)
+pip3 install -r requirements.txt
 
-### Uso Básico
-
-python3 ddos_anonymous.py -t [IP_OBJETIVO] -p [PUERTO] -th [HILOS] -m [MÉTODO]
+# Ejecutar
+python3 ddos_script.py
 ```
 
-### Opciones Disponibles
+## 🎮 Uso
+
+### Menú Interactivo
+Al ejecutar el script, verás un menú con 5 opciones:
 
 ```
--t, --target      Dirección IP objetivo
--p, --port        Puerto objetivo (0 para aleatorio)
--th, --threads    Número de hilos (default: 50)
--m, --method      Método de ataque: udp, tcp, random (default: random)
--a, --anonymous   Usar modo anónimo con proxies automáticos
--pf, --proxy-file Archivo con lista de proxies
+════════════════ MENÚ PRINCIPAL ════════════════
+[1] Iniciar ataque DDoS
+[2] Configuración avanzada  
+[3] Ver reportes anteriores
+[4] Verificar proxies
+[5] Salir
+════════════════════════════════════════════════
 ```
 
-### Ejemplos
+### Uso con Argumentos
+```bash
+# Ataque básico
+python3 ddos_script.py -t 192.168.1.100 -p 80
 
-#### Ataque básico:
+# Ataque con proxies automáticos
+python3 ddos_script.py -t 192.168.1.100 -p 80 -a
 
-python3 ddos_anonymous.py -t 192.168.1.1 -p 80 -th 50 -m tcp
+# Ataque con archivo de proxies
+python3 ddos_script.py -t 192.168.1.100 -p 80 -pf ghost_tunnels.txt
+
+# Modo sigiloso con verificación de proxies
+python3 ddos_script.py -t 192.168.1.100 -p 80 -a -v -s
+
+# Configuración completa
+python3 ddos_script.py -t 192.168.1.100 -p 80 -th 150 -m tcp -tp stealth -rf 50
 ```
 
-#### Ataque con modo anónimo (proxies automáticos):
-
-python ddos_anonymous.py -t 192.168.1.1 -p 80 -a
+### Parámetros Disponibles
+```
+-t, --target          IP objetivo (requerido)
+-p, --port            Puerto objetivo (0 para aleatorio)
+-th, --threads        Número de hilos (1-500, default: 50)
+-m, --method          Método: udp, tcp, random (default: random)
+-a, --anonymous       Modo anónimo con proxies automáticos
+-pf, --proxy-file     Archivo con lista de proxies
+-v, --verify-proxies  Verificar proxies antes de usar
+-tp, --timing-pattern Patrón: aggressive, normal, stealth, human_like
+-s, --stealth         Activar modo sigiloso
+-rf, --rotation-freq  Frecuencia rotación proxies (default: 25)
 ```
 
-#### Ataque con tu propia lista de proxies:
+## 🔧 Configuración de Proxies
 
-python ddos_anonymous.py -t 192.168.1.1 -p 80 -pf proxies_socks5anon.txt
+### Formato de Archivo de Proxies
+Crea un archivo `.txt` con proxies en estos formatos:
+```
+# Formato recomendado
+socks5:192.168.1.1:1080
+socks4:10.0.0.1:4145
+http:203.0.113.1:8080
+
+# Formatos alternativos
+192.168.1.1:1080:socks5
+10.0.0.1:4145:socks4
+203.0.113.1:8080:http
+
+# Formato simple (default: http)
+192.168.1.1:8080
+10.0.0.2:3128
 ```
 
-## 🔒 Proxies
+### Fuentes Recomendadas de Proxies
+- [ProxyNova](https://www.proxynova.com/proxy-server-list/) - Proxies verificados
+- [Free Proxy List](https://free-proxy-list.net/) - Actualización diaria
+- [SOCKS Proxy](https://www.socks-proxy.net/) - Específico para SOCKS
 
-### Formato de archivo de proxies
-Puedes crear un archivo de texto con proxies en cualquiera de estos formatos:
+## 📊 Características Avanzadas
+
+### Patrones de Timing
+- **Aggressive**: 0.001-0.005s (máxima velocidad)
+- **Normal**: 0.01-0.05s (equilibrado)
+- **Stealth**: 0.1-0.5s (sigiloso)
+- **Human_like**: 1.0-3.0s (simula comportamiento humano)
+
+### Modo Sigiloso
+- Genera requests HTTP realistas
+- Utiliza User-Agents de navegadores reales
+- Simula patrones de navegación web normales
+- Headers HTTP diversos y aleatorios
+
+### Sistema de Reportes
+Los reportes se guardan automáticamente en `ghost_reports.json`:
+```json
+{
+  "timestamp": "2025-01-22T15:30:45",
+  "duration": 120.5,
+  "packets_sent": 15680,
+  "packets_per_second": 130.12,
+  "proxy_rotations": 45,
+  "proxies_used": 23
+}
 ```
-ip:puerto
-ip:puerto:tipo
-tipo:ip:puerto
-```
 
-Proxies reales
-```
-socks5:51.158.119.88:1080
-socks5:95.216.181.107:9070
-socks5:207.180.204.70:48462
-socks5:72.210.221.197:4145
-socks5:103.240.161.101:6667
-socks5:159.89.228.253:38172
-socks5:184.178.172.13:15311
-socks5:188.166.104.152:39088
-socks5:184.181.217.206:4145
-socks5:198.8.94.170:4145
-socks5:184.170.245.148:4145
-socks5:98.170.57.231:4145
-socks5:98.162.25.16:4145
-socks5:148.251.249.251:1080
-socks5:51.79.52.80:3080
-socks5:198.8.94.174:39074
-socks5:104.248.63.17:30588
-socks5:199.102.106.94:4145
-socks5:192.111.139.163:19404
-socks5:37.187.133.177:55899
-```
-* o simplemente puedes ejecutar python3 ddos_script.py
+## 🎯 Casos de Uso Legítimos
 
-### Tipos de proxies soportados
-- **HTTP**: Proxies web estándar
-- **SOCKS4**: Proxies sin autenticación
-- **SOCKS5**: Proxies avanzados con soporte UDP (recomendados)
+### Pruebas de Penetración
+- Evaluación de la resistencia de servidores propios
+- Pruebas de carga en aplicaciones web
+- Verificación de sistemas de protección DDoS
 
-## 🔄 Anonimato Avanzado
+### Investigación de Seguridad
+- Análisis de patrones de tráfico
+- Estudios de comportamiento de red
+- Desarrollo de contramedidas
 
-Para maximizar el anonimato durante las pruebas legítimas, se recomienda:
+### Educación en Ciberseguridad
+- Demostraciones en cursos de seguridad
+- Laboratorios de ethical hacking
+- Comprensión de ataques de denegación de servicio
 
-1. Usar una VPN junto con los proxies SOCKS5
-2. Configurar Orbot (Tor para Android) para enrutar el tráfico de Termux
-3. Usar proxies privados en lugar de proxies públicos gratuitos
-4. Cambiar regularmente de ubicación de red
-5. Limitar la duración de las pruebas
+## 🔥 Rendimiento
 
-## 📊 Estadísticas y Monitoreo
+### Optimizaciones para Móviles
+- **Uso eficiente de memoria**: Optimizado para dispositivos con RAM limitada
+- **Gestión inteligente de hilos**: Previene sobrecarga del sistema
+- **Conexiones asíncronas**: Máximo rendimiento con mínimo consumo
+- **Rotación de proxies**: Distribución de carga entre múltiples puntos
 
-La herramienta proporciona estadísticas en tiempo real:
-- Paquetes enviados
-- Duración del ataque
-- Paquetes por segundo
-- Rotaciones de proxy
+### Benchmarks Típicos
+- **Dispositivo gama baja**: 50-100 paquetes/segundo
+- **Dispositivo gama media**: 100-300 paquetes/segundo  
+- **Dispositivo gama alta**: 300-500+ paquetes/segundo
+
+## 🛡️ Contramedidas y Detección
+
+### Técnicas Anti-Detección Implementadas
+- Rotación automática de proxies cada N paquetes
+- User-Agents diversos y actualizados
+- Patrones de timing variables
+- Paquetes con contenido aleatorio
+- Headers HTTP realistas
+
+### Sistemas que Pueden Detectar/Bloquear
+- **Cloudflare**: Protección avanzada contra DDoS
+- **AWS Shield**: Mitigación automática
+- **Fail2Ban**: Bloqueo por patrones de IP
+- **Rate limiting**: Límites por conexión/IP
 
 ## 🤝 Contribución
 
-Las contribuciones son bienvenidas. Por favor, asegúrate de:
-- Seguir las pautas de código del proyecto
-- No incluir código malicioso
-- Documentar adecuadamente los cambios
-- Respetar el enfoque ético del proyecto
+Las contribuciones son bienvenidas. Por favor:
+- Haz fork del repositorio
+- Crea una rama feature (`git checkout -b feature/mejora`)
+- Commit tus cambios (`git commit -am 'Añadir nueva característica'`)
+- Push a la rama (`git push origin feature/mejora`)
+- Abre un Pull Request
+
+### Directrices para Contribuir
+- Mantén el código limpio y bien comentado
+- Prueba todas las funcionalidades antes de enviar PR
+- Documenta nuevas características
+- Respeta la filosofía de uso ético
 
 ## 📜 Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT - vea el archivo LICENSE para más detalles.
+Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-*Este software se proporciona "tal cual", sin garantía de ningún tipo. El autor no se hace responsable por el mal uso o daños causados por esta herramienta.*
-<img src="https://raw.githubusercontent.com/0xAbbarhSF/0xBotNet/main/images%20(21).jpeg">
-#### Happy
+## 📞 Soporte
 
-## 📧 Contacto
+- **Issues**: [GitHub Issues](https://github.com/Darkrevengehack/DDoS-ghost/issues)
+- **Telegram**: [@Darkrevengehack](https://t.me/Darkrevengehack)
+- **Documentación**: [Wiki del proyecto](https://github.com/Darkrevengehack/DDoS-ghost/wiki)
 
-Para preguntas o sugerencias, abre un issue en este repositorio.
+#### Happy Hacking 🕵️
+
+---
+
+**⚠️ Recordatorio Legal**: Este software se proporciona "tal cual", sin garantía de ningún tipo. El autor no se hace responsable por el mal uso o daños causados por esta herramienta. Usar únicamente en sistemas propios o con autorización explícita.
