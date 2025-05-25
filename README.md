@@ -92,7 +92,7 @@ cd DDoS-ghost
 pip3 install -r requirements.txt
 
 # Ejecutar
-python3 ddos_script.py
+python3 dos_script.py
 ```
 
 ## 🎮 Uso
@@ -114,19 +114,19 @@ Al ejecutar el script, verás un menú con 6 opciones:
 ### Uso con Argumentos
 ```bash
 # Ataque básico HTTP Layer 7
-python3 ddos_script.py -t http://example.com -m http_flood
+python3 dos_script.py -t http://example.com -m http_flood
 
 # Ataque devastador con proxies
-python3 ddos_script.py -t https://example.com -m byob_attack -th 50 -a
+python3 dos_script.py -t https://example.com -m byob_attack -th 50 -a
 
 # Slowloris sigiloso
-python3 ddos_script.py -t http://example.com -m slowloris -th 25 -tp stealth
+python3 dos_script.py -t http://example.com -m slowloris -th 25 -tp stealth
 
 # SSL Exhaustion con archivo de proxies
-python3 ddos_script.py -t https://example.com -m ssl_exhaustion -pf proxies.txt
+python3 dos_script.py -t https://example.com -m ssl_exhaustion -pf proxies.txt
 
 # Ataque mixto Layer 7 optimizado
-python3 ddos_script.py -t http://example.com -m mixed_layer7 -th 45 -a -v
+python3 dos_script.py -t http://example.com -m mixed_layer7 -th 45 -a -v
 ```
 
 ### Parámetros Disponibles
